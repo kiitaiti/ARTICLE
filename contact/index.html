@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>お問い合わせ｜ARTICLE</title>
+<meta name="description" content="ARTICLEへのお問い合わせ。Web制作・映像制作・SNSのご相談、お見積りはこちらから。">
+<link rel="canonical" href="https://article58.jp/contact/">
+<meta property="og:site_name" content="ARTICLE">
+<meta property="og:title" content="お問い合わせ｜ARTICLE">
+<meta property="og:description" content="ARTICLEへのお問い合わせ。Web制作・映像制作・SNSのご相談、お見積りはこちらから。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://article58.jp/contact/">
+<meta property="og:image" content="https://article58.jp/assets/ogp-default.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="お問い合わせ｜ARTICLE">
+<meta name="twitter:description" content="ARTICLEへのお問い合わせ。Web制作・映像制作・SNSのご相談、お見積りはこちらから。">
+<meta name="twitter:image" content="https://article58.jp/assets/ogp-default.png">
+<link rel="icon" href="/assets/a-symbol-lime.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <img class="a" src="/assets/a-symbol-lime.png" alt="">
+  <div class="bar"></div>
+</div>
+
+<header>
+  <a class="logo" href="/" aria-label="ARTICLE トップへ">
+    <img class="a-light" src="/assets/a-symbol-mono.png" alt="" width="28" height="28">
+    <img class="a-dark" src="/assets/a-symbol-dark.png" alt="" width="28" height="28">
+    <span>ARTICLE</span>
+  </a>
+  <nav class="gnav" aria-label="グローバルナビゲーション">
+    <a href="/service/"><span class="jp">サービス</span><span class="en">Service</span></a>
+    <a href="/works/"><span class="jp">実績</span><span class="en">Works</span></a>
+    <a href="/about/"><span class="jp">ARTICLEについて</span><span class="en">About</span></a>
+    <a href="/column/"><span class="jp">コラム</span><span class="en">Column</span></a>
+    <a href="/contact/" class="is-current" aria-current="page"><span class="jp">お問い合わせ</span><span class="en">Contact</span></a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="navOverlay">Menu</button>
+</header>
+
+<div id="navOverlay" aria-label="メニュー">
+  <button class="close" aria-label="メニューを閉じる">Close</button>
+  <a class="nav-top" href="/"><span class="jp">トップ</span><span class="en">Top</span></a>
+  <a href="/service/"><span class="jp">サービス</span><span class="en">Service</span></a>
+  <a href="/works/"><span class="jp">実績</span><span class="en">Works</span></a>
+  <a href="/about/"><span class="jp">ARTICLEについて</span><span class="en">About</span></a>
+  <a href="/column/"><span class="jp">コラム</span><span class="en">Column</span></a>
+  <a href="/contact/" class="is-current" aria-current="page"><span class="jp">お問い合わせ</span><span class="en">Contact</span></a>
+</div>
+
+<main>
+
+<section class="page-hero" data-bg="dark">
+  <div class="ph-bg ph-contact" aria-hidden="true"></div>
+  <p class="crumb"><a href="/">Top</a><span>/</span><span>お問い合わせ / Contact</span></p>
+  <div class="inner">
+    <p class="no">05 / Contact</p>
+    <h1 class="anton">Start<br>a Project<span class="accent">.</span></h1>
+    <p class="jp">次につくりたいものを、聞かせてください。</p>
+  </div>
+</section>
+
+<section class="contact-body" data-bg="dark">
+  <div class="contact-grid">
+    <div class="contact-side">
+      <h2 class="anton rv">Let's<br>Talk<span style="color:var(--lime)">.</span></h2>
+      <p class="rv">お仕事のご相談、お見積り、その他ご不明な点など、お気軽にご連絡ください。内容を確認のうえ、担当者よりご返信いたします。</p>
+      <dl class="info rv">
+        <div><dt>Company</dt><dd>ARTICLE</dd></div>
+        <div><dt>Representative</dt><dd>代表　呉屋 貴一</dd></div>
+        <div><dt>Area</dt><dd>相模原（町田・県央エリアも対応）</dd></div>
+        <div><dt>Service</dt><dd>Web制作 / 映像制作 / SNS運用</dd></div>
+        <div><dt>Price</dt><dd>4万円〜（税別・地域企業応援価格）</dd></div>
+      </dl>
+    </div>
+
+    <div class="contact-form">
+      <div class="pj-select rv" role="group" aria-label="ご相談の種類">
+        <button type="button" data-pj="web" aria-pressed="false">Web制作</button>
+        <button type="button" data-pj="film" aria-pressed="false">映像制作</button>
+        <button type="button" data-pj="both" aria-pressed="false">Web + 映像</button>
+        <button type="button" data-pj="other" aria-pressed="false">その他</button>
+      </div>
+
+      <!-- Netlify Forms 接続済み。
+           data-netlify="true" があることで、Netlify はデプロイ時にこのHTMLを解析し
+           「contact」というフォームを自動登録します。送信は Netlify が受け取り、
+           成功すると action の /thanks/ へ移動します。 -->
+      <form id="contactForm"
+            name="contact"
+            method="POST"
+            action="/thanks/"
+            data-netlify="true"
+            netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden>
+          <label>入力しないでください：<input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+        <input type="hidden" id="pjType" name="type" value="">
+        <div class="field rv">
+          <label for="fName">お名前<span class="req">*</span></label>
+          <input id="fName" name="name" type="text" required placeholder="山田 太郎" autocomplete="name">
+        </div>
+        <div class="field rv">
+          <label for="fCompany">会社名・団体名</label>
+          <input id="fCompany" name="company" type="text" placeholder="株式会社〇〇" autocomplete="organization">
+        </div>
+        <div class="field rv">
+          <label for="fEmail">メールアドレス<span class="req">*</span></label>
+          <input id="fEmail" name="email" type="email" required placeholder="mail@example.com" autocomplete="email">
+        </div>
+        <div class="field rv">
+          <label for="fTel">電話番号</label>
+          <input id="fTel" name="tel" type="tel" placeholder="042-000-0000" autocomplete="tel">
+        </div>
+        <div class="field rv">
+          <label for="fBody">ご相談内容<span class="req">*</span></label>
+          <textarea id="fBody" name="message" required placeholder="ご依頼の概要、ご希望の時期、ご予算など、わかる範囲でお書きください。"></textarea>
+        </div>
+        <button class="btn-solid rv" id="contactSubmit" type="submit">送信する <span class="ar">&rarr;</span></button>
+        <p id="formMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer data-bg="dark">
+  <div class="cols">
+    <div class="brand">
+      <img src="/assets/a-symbol-lime.png" alt="ARTICLE">
+      <p>ARTICLE — Web &amp; Film Creative<br>神奈川・相模原</p>
+    </div>
+    <nav aria-label="フッターナビゲーション">
+      <a href="/">トップ<span>Top</span></a>
+      <a href="/service/">サービス<span>Service</span></a>
+      <a href="/works/">実績<span>Works</span></a>
+      <a href="/about/">ARTICLEについて<span>About</span></a>
+      <a href="/column/">コラム<span>Column</span></a>
+      <a href="/contact/">お問い合わせ<span>Contact</span></a>
+    </nav>
+  </div>
+  <div class="base">
+    <span>&copy; 2026 ARTICLE. All rights reserved.</span>
+    <span>企業の魅力を クリエイティブで 形にする</span>
+  </div>
+</footer>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "トップ",
+      "item": "https://article58.jp/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "お問い合わせ",
+      "item": "https://article58.jp/contact/"
+    }
+  ]
+}
+</script>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>
