@@ -533,7 +533,8 @@ Netlifyでも同じメッセージが Deploy log に出ます。
 | 直したいもの | `content.py` の変数名 |
 |---|---|
 | ヘッダー・フッターのメニュー | `NAV` |
-| サービス紹介（Web / 映像 / SNS） | `SERVICES` |
+| 「サービス」にカーソルを合わせると出るサブメニュー（HP制作 / 映像制作 / SNS支援） | `NAV_SUB` |
+| サービス紹介（Web / 映像 / SNS） | `SERVICES` （SNS支援の3項目は `items`） |
 | 制作の流れ | `PROCESS` |
 | よくある質問 | `FAQ` |
 | HP制作実績（microCMS未設定時） | `WEB_WORKS` |
