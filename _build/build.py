@@ -376,8 +376,9 @@ def page_index(articles):
 
   <div class="svc-list">
 """
-    for s in C.SERVICES[:2]:
+    for s in C.SERVICES:
         tags = "".join(f"<span>{t}</span>" for t in s["tags"])
+        link = s.get("home_link", s["link"])
         h += f"""    <article class="svc">
       <div class="svc-head">
         <p class="svc-no rv">Service <b>{s['no']}</b></p>
@@ -386,13 +387,13 @@ def page_index(articles):
       <div class="svc-body">
         <p class="rv">{s['body']}</p>
         <div class="svc-tags rv">{tags}</div>
-        <div class="svc-links rv"><a class="btn-line" href="{s['link'][0]}">{s['link'][1]} <span class="ar">&rarr;</span></a></div>
+        <div class="svc-links rv"><a class="btn-line" href="{link[0]}">{link[1]} <span class="ar">&rarr;</span></a></div>
       </div>
     </article>
 """
     h += """  </div>
   <div class="svc-more">
-    <a class="btn-line rv" href="/service/">SNS支援・料金・制作の流れを見る <span class="ar">&rarr;</span></a>
+    <a class="btn-line rv" href="/service/">料金・制作の流れを見る <span class="ar">&rarr;</span></a>
   </div>
 </section>
 """

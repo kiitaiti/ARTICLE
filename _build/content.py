@@ -84,6 +84,8 @@ SERVICES = [
         ],
         tags=["SNS運用代行", "写真・ショート動画", "Googleマップ", "地域集客", "数値をもとに改善"],
         link=("/contact/?type=other", "SNSについて相談する"),
+        # トップページのカードだけ、サービスページ内の詳細へ誘導する
+        home_link=("/service/#social", "SNS支援の詳細を見る"),
     ),
 ]
 
