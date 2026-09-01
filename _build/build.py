@@ -98,14 +98,36 @@ def jsonld(obj) -> str:
 
 
 # ================================================================ shell
-def nav_items(current, indent):
+def nav_items(current, indent, mobile=False):
+    """ナビのリンク一覧。NAV_SUB に登録がある項目にはサブメニューを付ける。
+
+    PC（ヘッダー）… <div class="has-sub"> で包み、カーソルを合わせると下に出る
+    スマホ（オーバーレイ）… 親リンクの下に小さめのリンクとして並べる
+    """
     rows = []
+    subs = getattr(C, "NAV_SUB", {})
     for href, jp, en in C.NAV:
         cls = ' class="is-current"' if href == current else ""
         aria = ' aria-current="page"' if href == current else ""
-        rows.append(
-            f'{indent}<a href="{href}"{cls}{aria}><span class="jp">{jp}</span><span class="en">{en}</span></a>'
-        )
+        link = f'<a href="{href}"{cls}{aria}><span class="jp">{jp}</span><span class="en">{en}</span></a>'
+        sub = subs.get(href)
+        if not sub:
+            rows.append(indent + link)
+            continue
+        if mobile:
+            rows.append(indent + link)
+            rows.append(f'{indent}<div class="nav-sub">')
+            for shref, sjp, sen in sub:
+                rows.append(f'{indent}  <a href="{shref}"><span class="jp">{sjp}</span><span class="en">{sen}</span></a>')
+            rows.append(f'{indent}</div>')
+        else:
+            rows.append(f'{indent}<div class="has-sub">')
+            rows.append(f'{indent}  {link}')
+            rows.append(f'{indent}  <div class="gnav-sub" aria-label="{esc(jp)}のサブメニュー">')
+            for shref, sjp, sen in sub:
+                rows.append(f'{indent}    <a href="{shref}"><span class="jp">{sjp}</span><span class="en">{sen}</span></a>')
+            rows.append(f'{indent}  </div>')
+            rows.append(f'{indent}</div>')
     return "\n".join(rows)
 
 
@@ -165,7 +187,7 @@ def head(title, desc, current, canonical="", og_image="", og_type="website",
 <div id="navOverlay" aria-label="メニュー">
   <button class="close" aria-label="メニューを閉じる">Close</button>
   <a class="nav-top" href="/"><span class="jp">トップ</span><span class="en">Top</span></a>
-{nav_items(current, "  ")}
+{nav_items(current, "  ", mobile=True)}
 </div>
 """)
     return "\n".join(parts)
@@ -370,7 +392,7 @@ def page_index(articles):
 """
     h += """  </div>
   <div class="svc-more">
-    <a class="btn-line rv" href="/service/">SNS関連サービス・料金・制作の流れを見る <span class="ar">&rarr;</span></a>
+    <a class="btn-line rv" href="/service/">SNS支援・料金・制作の流れを見る <span class="ar">&rarr;</span></a>
   </div>
 </section>
 """
@@ -430,11 +452,22 @@ def page_index(articles):
 
 
 # ================================================================ SERVICE
+def svc_items(s):
+    """サービスの「支援内容」リスト（content.py の items）。無ければ空文字。"""
+    items = s.get("items")
+    if not items:
+        return ""
+    rows = "".join(
+        f'\n          <li><strong>{esc(t)}</strong><span>{esc(d)}</span></li>' for t, d in items
+    )
+    return f'\n        <ul class="svc-items rv">{rows}\n        </ul>'
+
+
 def page_service(articles):
     h = head(
         "サービス｜ARTICLE — Web制作・映像制作・SNS / 料金と制作の流れ",
         "ARTICLEのサービス内容・料金・制作の流れ・よくある質問。"
-        "ホームページ制作、映像制作、SNS関連サービスを4万円から、制作期間2週間の目安で承ります。",
+        "ホームページ制作、映像制作、SNS支援を4万円から、制作期間2週間の目安で承ります。",
         "/service/", canonical="/service/",
     )
     h += f"""
@@ -469,7 +502,7 @@ def page_service(articles):
         <h3 class="svc-title rv">{s['en']}<span class="jp-name">{s['jp']}</span></h3>
       </div>
       <div class="svc-body">
-        <p class="rv">{s['body']}</p>
+        <p class="rv">{s['body']}</p>{svc_items(s)}
         <div class="svc-tags rv">{tags}</div>
         <div class="svc-links rv"><a class="btn-line" href="{s['link'][0]}">{s['link'][1]} <span class="ar">&rarr;</span></a></div>
       </div>

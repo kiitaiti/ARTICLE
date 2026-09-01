@@ -85,6 +85,25 @@ header.on-light nav.gnav a::after{background:currentColor}
 nav.gnav a:hover::after,nav.gnav a:focus-visible::after{transform:scaleX(1);transform-origin:left}
 nav.gnav a.is-current::after{transform:scaleX(1)}
 
+/* ---- サブメニュー（「サービス」にカーソルを合わせると下に出る） ---- */
+nav.gnav .has-sub{position:relative}
+nav.gnav .has-sub>a{padding-bottom:6px}
+nav.gnav .gnav-sub{
+  position:absolute;top:100%;left:0;min-width:190px;padding:8px 0;margin-top:8px;
+  background:var(--ink);color:#fff;border:1px solid var(--line-dark);
+  display:flex;flex-direction:column;gap:0;
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease),visibility 0s .25s;
+}
+nav.gnav .gnav-sub::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}/* 隙間でも閉じないように */
+nav.gnav .has-sub:hover .gnav-sub,nav.gnav .has-sub:focus-within .gnav-sub{
+  opacity:1;visibility:visible;transform:translateY(0);transition-delay:0s}
+nav.gnav .gnav-sub a{flex-direction:row;align-items:baseline;gap:10px;padding:10px 18px;color:#fff}
+nav.gnav .gnav-sub a .jp{font-size:12px}
+nav.gnav .gnav-sub a .en{margin-left:auto}
+nav.gnav .gnav-sub a::after{left:18px;right:18px;width:auto;bottom:6px;background:var(--lime)}
+nav.gnav .gnav-sub a:hover .jp,nav.gnav .gnav-sub a:focus-visible .jp{color:var(--lime)}
+
 .menu-btn{display:none;font-family:var(--ui);font-weight:700;font-size:11px;letter-spacing:.28em;
   text-transform:uppercase;padding:8px 0}
 @media(max-width:1000px){
@@ -104,6 +123,11 @@ nav.gnav a.is-current::after{transform:scaleX(1)}
 #navOverlay a .en{font-family:var(--ui);font-weight:700;font-size:10px;letter-spacing:.26em;
   text-transform:uppercase;opacity:.5;margin-left:auto}
 #navOverlay a.is-current .jp{color:var(--lime)}
+#navOverlay .nav-sub{display:flex;flex-wrap:wrap;gap:0 18px;padding:6px 0 10px 14px;border-bottom:1px solid var(--line-dark)}
+#navOverlay .nav-sub a{border-bottom:0;padding:6px 0;gap:8px}
+#navOverlay .nav-sub a .jp{font-size:clamp(14px,3.6vw,17px);font-weight:700;opacity:.85}
+#navOverlay .nav-sub a .jp::before{content:"— ";opacity:.5}
+#navOverlay .nav-sub a .en{margin-left:0;font-size:9px}
 #navOverlay .close{position:absolute;top:16px;right:clamp(20px,3.4vw,48px);
   font-family:var(--ui);font-weight:700;font-size:11px;letter-spacing:.28em;padding:8px 0}
 
@@ -282,6 +306,13 @@ nav.gnav a.is-current::after{transform:scaleX(1)}
 .svc-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 .svc-tags span{font-family:var(--ui);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   border:1px solid var(--line-light);padding:7px 13px;border-radius:999px}
+.svc-items{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--line-light);max-width:56ch}
+.svc-items li{display:grid;gap:4px;padding:16px 0;border-bottom:1px solid var(--line-light)}
+.svc-items li strong{font-weight:900;font-size:15px;letter-spacing:.03em}
+.svc-items li strong::before{content:"";display:inline-block;width:8px;height:8px;margin-right:10px;
+  background:var(--lime-vivid);vertical-align:2px}
+.svc-items li span{font-size:14px;line-height:1.9;color:rgba(11,11,12,.72)}
+.svc{scroll-margin-top:80px}
 .svc-links{margin-top:8px}
 @media(max-width:860px){.svc{grid-template-columns:1fr;gap:20px}}
 
