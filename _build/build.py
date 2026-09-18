@@ -330,6 +330,81 @@ def article_card(a, reveal=True):
 """
 
 
+
+# ---------------------------------------------------------------- 実績ピックアップ（トップ）
+def pickup_band():
+    """トップ直下に出す制作実績ピックアップ（3件）。
+
+    content.py の WEB_WORKS で pickup= が入っている項目を優先して3件選びます。
+    （microCMS利用時など pickup が無い場合は、先頭3件を copy の文章で表示します）
+    """
+    picks = [w for w in WEB_WORKS if w.get("pickup") and not w.get("sample")][:3]
+    if not picks:
+        picks = [w for w in WEB_WORKS if not w.get("sample")][:3]
+    if not picks:
+        return ""
+
+    cards = []
+    for i, w in enumerate(picks):
+        name = w.get("name") or ""
+        client = w.get("jp") or ""
+        url = (w.get("url") or "").strip()
+        ghost = w.get("ghost") or name
+        text = w.get("pickup") or w.get("copy") or ""
+        host = re.sub(r"^https?://", "", url).rstrip("/")
+        tags = "".join("<span>" + esc(t) + "</span>" for t in (w.get("tags") or [])[:3])
+
+        thumb = (w.get("thumb") or "").strip()
+        if thumb:
+            media = img_tag(thumb, (client or name) + "のWebサイト スクリーンショット", "wk-thumb", 1080, 0.625)
+        else:
+            media = "<span class=\"wk-noimg\" aria-hidden=\"true\">" + esc(ghost) + "</span>"
+        preview = " data-preview=\"" + esc(url) + "\"" if url else ""
+        bar = ("<span class=\"wk-bar\" aria-hidden=\"true\"><i></i><i></i><i></i><b>"
+               + esc(host) + "</b></span>") if host else ""
+        hover = ("<span class=\"wk-hover\" aria-hidden=\"true\"><span>View Site</span></span>"
+                 if url else "")
+
+        shot = ("<span class=\"wk-shot\"" + preview + ">\n          " + bar
+                + "\n          <span class=\"wk-frame\">" + media + "</span>\n          "
+                + hover + "\n        </span>")
+        if url:
+            media_html = ("<a class=\"pick-media rv\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\""
+                          " aria-label=\"" + esc(client or name) + "のサイトを新しいタブで開く\">\n        "
+                          + shot + "\n      </a>")
+        else:
+            media_html = "<div class=\"pick-media rv\">\n        " + shot + "\n      </div>"
+
+        btn = ("\n        <div class=\"pick-links rv\"><a class=\"btn-line\" href=\"" + esc(url)
+               + "\" target=\"_blank\" rel=\"noopener\">サイトを見る <span class=\"ar\">&rarr;</span></a></div>"
+               ) if url else ""
+
+        cards.append(
+            "    <article class=\"pick-card\">\n      " + media_html + "\n"
+            "      <div class=\"pick-body\">\n"
+            "        <p class=\"pick-no rv\">Pickup <b>" + ("%02d" % (i + 1)) + "</b></p>\n"
+            "        <h3 class=\"pick-name rv\">" + esc(name)
+            + "<span class=\"pick-client\">" + esc(client) + "</span></h3>\n"
+            "        <p class=\"pick-copy rv\">" + esc(text) + "</p>\n"
+            "        <div class=\"pick-tags rv\">" + tags + "</div>" + btn + "\n"
+            "      </div>\n"
+            "    </article>\n")
+
+    return (
+        "\n<section class=\"pickup theme-light\" data-bg=\"light\" aria-label=\"制作実績ピックアップ\">\n"
+        "  <div class=\"sec-intro\">\n"
+        "    <p class=\"no rv\"><span class=\"n\">01</span> Works &mdash; 制作実績</p>\n"
+        "    <h2 class=\"anton rv\">See Our<br><span class=\"stroke\">Works</span><span class=\"accent\">.</span></h2>\n"
+        "    <p class=\"jp rv\">まずは、つくったものをご覧ください。実際に公開されているサイトです。"
+        "一社ずつ、お話を聞くところから一緒につくっています。</p>\n"
+        "  </div>\n"
+        "  <div class=\"pick-list\">\n" + "".join(cards) + "  </div>\n"
+        "  <div class=\"svc-more\">\n"
+        "    <a class=\"btn-line rv\" href=\"/works/\">依頼内容・対応範囲つきで、実績をすべて見る <span class=\"ar\">&rarr;</span></a>\n"
+        "  </div>\n"
+        "</section>\n")
+
+
 # ================================================================ TOP
 def page_index(articles):
     latest = articles[:3]
@@ -366,10 +441,11 @@ def page_index(articles):
 </section>
 """
     h += MARQUEE
+    h += pickup_band()
     h += f"""
 <section class="services theme-light" data-bg="light" aria-label="事業紹介">
   <div class="sec-intro">
-    <p class="no rv"><span class="n">01</span> Business &mdash; 事業紹介</p>
+    <p class="no rv"><span class="n">02</span> Business &mdash; 事業紹介</p>
     <h2 class="anton rv">What<br><span class="stroke">We Do</span><span class="accent">.</span></h2>
     <p class="jp rv">{C.SERVICE_LEAD}</p>
   </div>
@@ -402,7 +478,7 @@ def page_index(articles):
     h += """
 <section class="col-latest theme-light" data-bg="light" aria-label="最新の記事">
   <div class="sec-intro">
-    <p class="no rv"><span class="n">03</span> Column &amp; News &mdash; 最新記事</p>
+    <p class="no rv"><span class="n">04</span> Column &amp; News &mdash; 最新記事</p>
     <h2 class="anton rv">Latest<br><span class="stroke">Posts</span><span class="accent">.</span></h2>
     <p class="jp rv">お役立ち記事とARTICLEからのお知らせを掲載しています。</p>
   </div>
@@ -654,6 +730,15 @@ def web_card(w, i):
         rows.append('<span class="wk-tags">' + tags + '</span>')
     if desc:
         rows.append('<span class="wk-desc">' + esc(desc) + '</span>')
+    detail = w.get("detail") or {}
+    spec_rows = [(label, detail.get(key)) for label, key in
+                 (("依頼内容", "request"), ("対応範囲", "scope"), ("工夫した点", "point"))
+                 if detail.get(key)]
+    if spec_rows:
+        spec = "".join('\n            <span class="wk-spec-row"><b>' + esc(label)
+                       + '</b><i>' + esc(val) + '</i></span>'
+                       for label, val in spec_rows)
+        rows.append('<span class="wk-spec">' + spec + '\n          </span>')
     if url:
         rows.append('<span class="wk-cta">Visit Website '
                     '<i aria-hidden="true">&#8599;</i></span>')
@@ -699,6 +784,8 @@ def film_card(f, i):
     play = '<span class="wk-play" aria-hidden="true"></span>' if video else ""
     ext = ('<span class="wk-hover" aria-hidden="true"><span>Watch</span></span>'
            if (link and not video) else "")
+    badge = ('<span class="wk-sample">Sample<i>制作イメージ</i></span>'
+             if f.get("sample") else "")
 
     rows = []
     if kind:
@@ -711,7 +798,7 @@ def film_card(f, i):
 
     shot = ('<span class="wk-shot is-film' + vcls + '">\n          '
             '<span class="wk-frame">' + media + '</span>\n          '
-            + play + ext + '\n        </span>')
+            + play + ext + badge + '\n        </span>')
 
     if video:
         vert_attr = ' data-vertical="1"' if vertical else ''
