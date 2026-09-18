@@ -148,6 +148,10 @@ FAQ = [
 ]
 
 # ================================================================ WORKS
+# 実績の表示順：ここに書いた語（名前・クライアント名に含まれる語）を持つ実績が、
+# microCMSの並び順に関係なく先頭に来ます。トップのピックアップと実績ページの両方に効きます。
+WORKS_PRIORITY = ["TRYS"]
+
 WEB_WORKS = [
     dict(name="TRYS", jp="株式会社TRYS", ghost="TRYS",
          url="https://trys-sugi.netlify.app/",

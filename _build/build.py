@@ -323,6 +323,35 @@ def article_card(a, reveal=True):
 
 
 
+
+def tidy_web_works(items):
+    """実績データの整形。
+
+    1) url が空で、紹介文の中にURLが書かれている場合は url 欄へ移す
+       （microCMSでURL欄が未入力でも、ブラウザ枠・ライブプレビュー・ボタンが出るように）
+    2) content.py の WORKS_PRIORITY に載っている語を含む実績を先頭に並べ替える
+    """
+    items = [dict(w) for w in (items or [])]
+    for w in items:
+        if not (w.get("url") or "").strip():
+            m = re.search(r"https?://[^\s\u3000、。」）)]+", w.get("copy") or "")
+            if m:
+                w["url"] = m.group(0)
+        u = (w.get("url") or "").strip()
+        if u and u in (w.get("copy") or ""):
+            w["copy"] = re.sub(r"(?:URL[:：]?\s*)?" + re.escape(u), "", w["copy"]).strip(" 　\n")
+    keys = [k.lower() for k in getattr(C, "WORKS_PRIORITY", []) if k]
+    if keys:
+        def rank(w):
+            t = ((w.get("name") or "") + " " + (w.get("jp") or "")).lower()
+            for i, k in enumerate(keys):
+                if k in t:
+                    return i
+            return len(keys)
+        items = sorted(items, key=rank)  # 安定ソート：優先語なしの実績は元の順のまま
+    return items
+
+
 # ---------------------------------------------------------------- 実績ピックアップ（トップ）
 def pickup_band():
     """トップ直下に出す制作実績ピックアップ（3件）。
@@ -1494,6 +1523,7 @@ def write(path: pathlib.Path, text: str) -> int:
 
 def main() -> int:
     global WEB_WORKS, FILM_WORKS
+    WEB_WORKS = tidy_web_works(WEB_WORKS)
 
     print("─" * 62)
     print("ARTICLE — build")
@@ -1518,7 +1548,7 @@ def main() -> int:
     print(f"  記事     : {len(articles)} 件 / {label}")
 
     if cms_web:
-        WEB_WORKS = cms_web
+        WEB_WORKS = tidy_web_works(cms_web)
         print(f"  HP実績   : {len(cms_web)} 件 / microCMS（works-web）")
     else:
         print(f"  HP実績   : {len(WEB_WORKS)} 件 / _build/content.py の内容")
