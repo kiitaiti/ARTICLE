@@ -149,6 +149,19 @@ FAQ = [
 
 # ================================================================ WORKS
 WEB_WORKS = [
+    dict(name="TRYS", jp="株式会社TRYS", ghost="TRYS",
+         url="https://trys-sugi.netlify.app/",
+         tags=["Corporate Website", "Machida", "Construction"],
+         copy="東京都町田市の建築・内装工事会社、株式会社TRYSのコーポレートサイト。"
+              "「BUILD THE FUTURE.」を掲げ、事業内容・施工実績・会社情報までを一つの導線で構成した。",
+         pickup="「BUILD THE FUTURE.」という言葉に負けないサイトに。"
+                "施工実績が主役になる構成で、現場の迫力がそのまま伝わるようにつくりました。",
+         detail=dict(
+             request="コーポレートサイトの新規制作",
+             scope="構成・デザイン・実装・公開",
+             point="施工実績を大きく見せるレイアウトで、事業内容から会社情報・お問い合わせまでを"
+                   "一本の導線に。写真の見せ方で、建築会社らしい力強さを出しています。",
+         )),
     dict(name="WARM BLUE", jp="WARMBLUEmachida", ghost="WARMBLUE",
          url="https://warmblue-machida.netlify.app/",
          tags=["Web Design", "Project Site", "Machida"],
@@ -163,19 +176,6 @@ WEB_WORKS = [
              scope="構成・文章の整理・デザイン・実装・公開",
              point="テーマカラーの青を主役に、スクロールにあわせて活動・スポット・スケジュールが"
                    "流れるように配置。毎年の開催にあわせて更新しやすい構成にしています。",
-         )),
-    dict(name="TRYS", jp="株式会社TRYS", ghost="TRYS",
-         url="https://trys-sugi.netlify.app/",
-         tags=["Corporate Website", "Machida", "Construction"],
-         copy="東京都町田市の建築・内装工事会社、株式会社TRYSのコーポレートサイト。"
-              "「BUILD THE FUTURE.」を掲げ、事業内容・施工実績・会社情報までを一つの導線で構成した。",
-         pickup="「BUILD THE FUTURE.」という言葉に負けないサイトに。"
-                "施工実績が主役になる構成で、現場の迫力がそのまま伝わるようにつくりました。",
-         detail=dict(
-             request="コーポレートサイトの新規制作",
-             scope="構成・デザイン・実装・公開",
-             point="施工実績を大きく見せるレイアウトで、事業内容から会社情報・お問い合わせまでを"
-                   "一本の導線に。写真の見せ方で、建築会社らしい力強さを出しています。",
          )),
     dict(name="Zangiya Daikichi", jp="ザンギ屋大吉", ghost="DAIKICHI",
          url="https://zangiya-daikichi.netlify.app/",

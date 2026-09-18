@@ -223,14 +223,6 @@ def footer(scripts="", jsonld_blocks=""):
 """
 
 
-MARQUEE = """
-<div class="marquee" data-bg="dark" aria-hidden="true">
-  <div class="track">
-    <div class="mq-group"><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span></div>
-    <div class="mq-group"><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span><span>Web <i>&mdash;</i> Film <i>&mdash;</i> ARTICLE <i>&mdash;</i> 相模原 <i>&mdash;</i></span></div>
-  </div>
-</div>
-"""
 
 
 def cta_lime():
@@ -440,7 +432,6 @@ def page_index(articles):
   <div class="hero-scroll" aria-hidden="true">SCROLL</div>
 </section>
 """
-    h += MARQUEE
     h += pickup_band()
     h += f"""
 <section class="services theme-light" data-bg="light" aria-label="事業紹介">
