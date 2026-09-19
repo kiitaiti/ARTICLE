@@ -1077,10 +1077,7 @@ footer .base{margin-top:clamp(38px,6vh,64px);padding-top:22px;border-top:1px sol
 .wk-sample i{font-style:normal;font-family:var(--jp);font-weight:700;font-size:10px;letter-spacing:.08em;
   color:#fff;text-transform:none}
 
-/* ===== CMSサムネイルの白フチ・角丸対策 =====
-   モックアップ画像に焼き込まれた白背景・角丸が枠の中で余白に見えないよう、
-   Web実績のサムネイルは少しズームして端を切り落とす（映像実績には適用しない） */
-.wk-shot:not(.is-film) .wk-thumb{transform:scale(1.08)}
-.wk-card > .wk-link:not(.is-static):hover .wk-shot:not(.is-film) .wk-thumb{transform:scale(1.11)}
-.pick-media .wk-shot:not(.is-film) .wk-thumb{transform:scale(1.08)}
-.pick-media:hover .wk-shot:not(.is-film) .wk-thumb{transform:scale(1.1)}
+/* ===== CMSサムネイル（モックアップ画像）の見せ方 =====
+   Web実績のサムネイルは中央基準で表示。画像の縦横比が枠と少し違っても、
+   モックアップ本体が見切れず、画像端に焼き込まれた白フチ・角丸が目立たない */
+.wk-shot:not(.is-film) .wk-thumb{object-position:center}

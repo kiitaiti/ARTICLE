@@ -381,13 +381,11 @@ def pickup_band():
         else:
             media = "<span class=\"wk-noimg\" aria-hidden=\"true\">" + esc(ghost) + "</span>"
         preview = " data-preview=\"" + esc(url) + "\"" if url else ""
-        bar = ("<span class=\"wk-bar\" aria-hidden=\"true\"><i></i><i></i><i></i><b>"
-               + esc(host) + "</b></span>") if host else ""
         hover = ("<span class=\"wk-hover\" aria-hidden=\"true\"><span>View Site</span></span>"
                  if url else "")
 
-        shot = ("<span class=\"wk-shot\"" + preview + ">\n          " + bar
-                + "\n          <span class=\"wk-frame\">" + media + "</span>\n          "
+        shot = ("<span class=\"wk-shot\"" + preview + ">\n          "
+                "<span class=\"wk-frame\">" + media + "</span>\n          "
                 + hover + "\n        </span>")
         if url:
             media_html = ("<a class=\"pick-media rv\" href=\"" + esc(url) + "\" target=\"_blank\" rel=\"noopener\""
@@ -431,8 +429,8 @@ def page_index(articles):
     latest = articles[:3]
     h = head(
         "ARTICLE｜Web制作・映像制作 — 企業の魅力を、クリエイティブで形にする。",
-        "ARTICLEは、神奈川県相模原市を拠点にWeb制作と映像制作を行うクリエイティブカンパニーです。"
-        "SNSフォロワー5万人の運用実績。制作費は4万円から、制作期間は2週間。",
+        "Web制作・映像制作・SNS支援で、集客・採用につながるクリエイティブを。"
+        "相模原・町田を拠点に全国対応。SNSフォロワー5万人の運用実績。制作費は4万円から、制作期間は2週間。",
         "/", canonical="/",
     )
     h += f"""
@@ -737,8 +735,6 @@ def web_card(w, i):
         media = '<span class="wk-noimg" aria-hidden="true">' + esc(ghost) + '</span>'
 
     preview = ' data-preview="' + esc(url) + '"' if url else ""
-    bar = ('<span class="wk-bar" aria-hidden="true"><i></i><i></i><i></i><b>'
-           + esc(host) + '</b></span>') if host else ""
     hover = ('<span class="wk-hover" aria-hidden="true"><span>View Site</span></span>'
              if url else "")
 
@@ -765,8 +761,8 @@ def web_card(w, i):
     body = ('<span class="wk-body">\n          '
             + '\n          '.join(rows) + '\n        </span>')
 
-    shot = ('<span class="wk-shot"' + preview + '>\n          ' + bar
-            + '\n          <span class="wk-frame">' + media + '</span>\n          '
+    shot = ('<span class="wk-shot"' + preview + '>\n          '
+            '<span class="wk-frame">' + media + '</span>\n          '
             + hover + '\n        </span>')
 
     if url:
@@ -974,8 +970,8 @@ def page_works(articles):
 def page_about(articles):
     h = head(
         "ARTICLEについて｜ARTICLE — 強み・会社概要・対応地域",
-        "神奈川県相模原市を拠点に、Web制作と映像制作を行うARTICLEについて。"
-        "選ばれる5つの強み、会社概要、対応地域をご紹介します。",
+        "相模原を拠点に、全国の企業の集客・採用を支援するARTICLEについて。"
+        "選ばれる5つの強み、会社概要、対応エリアをご紹介します。",
         "/about/", canonical="/about/",
     )
     h += f"""
@@ -1080,7 +1076,7 @@ def page_about(articles):
     <div class="area-body">
       <p class="rv">{C.AREA_LEAD}</p>
       <div class="area-tags rv">{areas}</div>
-      <a class="btn-line rv" href="/contact/">エリア外かどうか相談する <span class="ar">&rarr;</span></a>
+      <a class="btn-line rv" href="/contact/">オンラインで相談する <span class="ar">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -1128,7 +1124,7 @@ def page_column(articles):
 
     h = head(
         "コラム・お知らせ｜ARTICLE",
-        "ホームページ制作、映像制作、SNS、地域企業向けのお役立ち記事と、"
+        "ホームページ制作、映像制作、SNS、企業の集客・採用に役立つ記事と、"
         "ARTICLEからのお知らせを掲載しています。",
         "/column/", canonical="/column/",
     )
