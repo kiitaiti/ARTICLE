@@ -380,7 +380,7 @@ def pickup_band():
             media = img_tag(thumb, (client or name) + "のWebサイト スクリーンショット", "wk-thumb", 1080, 0.625)
         else:
             media = "<span class=\"wk-noimg\" aria-hidden=\"true\">" + esc(ghost) + "</span>"
-        preview = " data-preview=\"" + esc(url) + "\"" if url else ""
+        preview = " data-preview=\"" + esc(url) + "\"" if (url and not thumb) else ""
         hover = ("<span class=\"wk-hover\" aria-hidden=\"true\"><span>View Site</span></span>"
                  if url else "")
 
@@ -734,7 +734,9 @@ def web_card(w, i):
     else:
         media = '<span class="wk-noimg" aria-hidden="true">' + esc(ghost) + '</span>'
 
-    preview = ' data-preview="' + esc(url) + '"' if url else ""
+    # サムネイルがある場合はライブプレビュー（iframe）を使わず、常に画像を表示する
+    # （埋め込みを拒否するサイトがあると、環境によって灰色の枠になってしまうため）
+    preview = ' data-preview="' + esc(url) + '"' if (url and not thumb) else ""
     hover = ('<span class="wk-hover" aria-hidden="true"><span>View Site</span></span>'
              if url else "")
 
