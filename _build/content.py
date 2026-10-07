@@ -357,4 +357,13 @@ PRICE_NOTES = [
     "実績を積み重ねている時期でもあるため、価格はできるだけ抑えています。品質を削って安くしているわけではありません",
 ]
 
+# ================================================================ 計測タグ
+# Googleアナリティクス4の測定ID。空にするとタグは出力されません。
+# （全ページの <head> に自動で挿入されます）
+GA4_MEASUREMENT_ID = "G-YVYV8RJ345"
+
+# Googleサーチコンソール「HTMLタグ」確認用のcontent値。
+# article58.jp はドメイン経由で所有権確認済みのため、通常は空のままでOK。
+SEARCH_CONSOLE_META = ""
+
 FOOTER_TAGLINE = "ARTICLE — Web &amp; Film Creative<br>神奈川・相模原"

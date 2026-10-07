@@ -143,6 +143,19 @@ def head(title, desc, current, canonical="", og_image="", og_type="website",
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">"""]
+    ga_id = (getattr(C, "GA4_MEASUREMENT_ID", "") or "").strip()
+    if ga_id:
+        parts.append(f"""<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={esc(ga_id)}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{esc(ga_id)}');
+</script>""")
+    sc_meta = (getattr(C, "SEARCH_CONSOLE_META", "") or "").strip()
+    if sc_meta:
+        parts.append(f'<meta name="google-site-verification" content="{esc(sc_meta)}">')
     if noindex:
         parts.append('<meta name="robots" content="noindex">')
     if can:
