@@ -5,8 +5,8 @@
 サイトを表示するための簡易サーバーを立ち上げ、ブラウザを自動で開きます。
 直接これを実行してもいいですが、通常は次のファイルをダブルクリックしてください。
 
-  Mac      … プレビュー起動_Mac.command
-  Windows  … プレビュー起動_Windows.bat
+  Mac      … preview_mac.command
+  Windows  … preview_windows.bat
 
 止めるときは、開いた黒い画面（ターミナル / コマンドプロンプト）を閉じるか、
 Ctrl + C を押してください。

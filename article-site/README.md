@@ -7,8 +7,8 @@ Web制作・映像制作の2事業を軸にした静的サイトです。
 
 ## ⚠️ サイトを見るときは、必ずこのファイルから
 
-> ### 🖱 `プレビュー起動_Mac.command`（Mac）
-> ### 🖱 `プレビュー起動_Windows.bat`（Windows）
+> ### 🖱 `preview_mac.command`（Mac）
+> ### 🖱 `preview_windows.bat`（Windows）
 >
 > **このどちらかをダブルクリック**してください。ブラウザが自動で開きます。
 > 閉じるときは、いっしょに開いた黒い画面を閉じてください。
@@ -34,7 +34,7 @@ Web制作・映像制作の2事業を軸にした静的サイトです。
 </details>
 
 **Macで「開発元を確認できないため開けません」と出たとき**
-`プレビュー起動_Mac.command` を **右クリック →「開く」→「開く」** を選んでください（初回のみ）。
+`preview_mac.command` を **右クリック →「開く」→「開く」** を選んでください（初回のみ）。
 
 **「Pythonが見つかりません」と出たとき**
 [7章](#7-ローカルでのビルド確認方法)を参照してください。
@@ -151,8 +151,8 @@ article-site/
 │   ├── ogp-default.png   SNSシェア用の共通画像（1200×630）
 │   └── （画像・動画）
 │
-├── プレビュー起動_Mac.command      ★Macはこれをダブルクリック
-├── プレビュー起動_Windows.bat      ★Windowsはこれをダブルクリック
+├── preview_mac.command      ★Macはこれをダブルクリック
+├── preview_windows.bat      ★Windowsはこれをダブルクリック
 ├── _redirects            旧URLからの301リダイレクト
 ├── netlify.toml          Netlifyのビルド設定
 └── README.md             このファイル
@@ -453,8 +453,8 @@ Python 3.8以上だけです。追加のインストール（pip等）は不要�
 
 | OS | ダブルクリックするファイル |
 |---|---|
-| Mac | `プレビュー起動_Mac.command` |
-| Windows | `プレビュー起動_Windows.bat` |
+| Mac | `preview_mac.command` |
+| Windows | `preview_windows.bat` |
 
 ブラウザが自動で開きます。終了するときは、いっしょに開いた黒い画面を閉じてください。
 
