@@ -1,0 +1,54 @@
+[
+  {
+    "id": "sample-1",
+    "title": "（サンプル）ホームページのリニューアル前に決めておきたい3つのこと",
+    "slug": "sample-site-renewal",
+    "category": ["COLUMN"],
+    "excerpt": "これはローカル確認用のサンプル記事です。microCMSを接続すると、この記事は表示されなくなります。リニューアルの前に整理しておくと進行がスムーズになる項目をまとめました。",
+    "content": "<h2>まず「誰に何を伝えるか」を決める</h2><p>リニューアルの相談で最初にうかがうのは、デザインの好みではなく<strong>誰に向けたサイトなのか</strong>です。ここが決まっていないと、あとから何度でも作り直しが発生します。</p><h3>整理しておきたい項目</h3><ul><li>いちばん見てほしい相手</li><li>その相手にとってほしい行動</li><li>いまのサイトで足りていないと感じていること</li></ul><h3>進め方の目安</h3><ol><li>現状のページを一覧にする</li><li>残すページ・やめるページを決める</li><li>足りないページを洗い出す</li></ol><blockquote><p>やることを増やすより、やらないことを決めるほうが早く進みます。</p></blockquote><h2>素材の準備は早めに</h2><p>写真や文章の準備は、想像よりも時間がかかります。撮影が必要かどうかは<a href=\"/contact/\">お問い合わせ</a>の段階で相談しておくと安心です。</p><figure><img src=\"/assets/thumb-kiichi.jpg\" alt=\"サンプル画像\"></figure><h3>目安のスケジュール</h3><table><thead><tr><th>工程</th><th>期間の目安</th></tr></thead><tbody><tr><td>ヒアリング</td><td>60〜90分</td></tr><tr><td>ご提案・お見積り</td><td>3〜7営業日</td></tr><tr><td>制作</td><td>2週間</td></tr></tbody></table><p>詳しくは<a href=\"/service/\">サービスページ</a>をご覧ください。</p>",
+    "eyecatch": { "url": "/assets/hero-final-poster.jpg", "width": 1920, "height": 1080 },
+    "date": "2026-08-12T10:00:00.000Z",
+    "revisedAt": "2026-08-15T09:00:00.000Z",
+    "seoTitle": "",
+    "seoDescription": ""
+  },
+  {
+    "id": "sample-2",
+    "title": "（サンプル）縦型ショート動画で最初の2秒に入れたい要素",
+    "slug": "sample-short-movie",
+    "category": ["COLUMN"],
+    "excerpt": "これはローカル確認用のサンプル記事です。ショート動画の冒頭でつまずかないための考え方を、実際の編集の手順に沿って整理しました。",
+    "content": "<h2>最初の2秒で決まる</h2><p>ショート動画は、冒頭で離脱するかどうかが決まります。<strong>動きと文字を同時に出す</strong>のが基本です。</p><ul><li>結論を先に置く</li><li>被写体を画面の中央に置かない</li><li>字幕は2行までにおさめる</li></ul><h3>撮影時のメモ</h3><p>縦型は上下に情報が入るぶん、横型よりも余白の設計がシビアになります。</p><blockquote><p>編集で直すより、撮影時に整えるほうが速い。</p></blockquote><h2>音の扱い</h2><p>音が出ない前提でも成立するか、必ず確認します。</p>",
+    "eyecatch": { "url": "/assets/film-social-poster.jpg", "width": 1080, "height": 1920 },
+    "date": "2026-07-28T09:00:00.000Z",
+    "revisedAt": "2026-07-28T09:00:00.000Z",
+    "seoTitle": "",
+    "seoDescription": ""
+  },
+  {
+    "id": "sample-3",
+    "title": "（サンプル）夏季休業のお知らせ",
+    "slug": "sample-holiday",
+    "category": ["NEWS"],
+    "excerpt": "これはローカル確認用のサンプル記事です。NEWSカテゴリーの表示を確認するために置いています。",
+    "content": "<p>これはローカル確認用のサンプル記事です。実際のお知らせは microCMS から投稿してください。</p><h2>期間</h2><p>ここに期間を記載します。</p><ul><li>お問い合わせフォームは期間中も受付します</li><li>ご返信は営業開始日以降になります</li></ul>",
+    "eyecatch": null,
+    "date": "2026-07-10T00:00:00.000Z",
+    "revisedAt": "2026-07-10T00:00:00.000Z",
+    "seoTitle": "",
+    "seoDescription": ""
+  },
+  {
+    "id": "sample-4",
+    "title": "（サンプル）依頼前に用意しておくと早い資料",
+    "slug": "sample-before-you-order",
+    "category": ["COLUMN"],
+    "excerpt": "これはローカル確認用のサンプル記事です。アイキャッチなし・本文短めのパターンでレイアウトが崩れないかを確認するために置いています。",
+    "content": "<h2>用意しておくと早いもの</h2><ol><li>会社案内やパンフレット</li><li>参考にしたいサイトのURL</li><li>掲載したい写真</li></ol><p>すべてそろっていなくても大丈夫です。<a href=\"/contact/\">お問い合わせ</a>からご相談ください。</p>",
+    "eyecatch": null,
+    "date": "2026-06-30T12:00:00.000Z",
+    "revisedAt": "2026-06-30T12:00:00.000Z",
+    "seoTitle": "",
+    "seoDescription": ""
+  }
+]
