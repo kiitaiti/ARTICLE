@@ -226,7 +226,7 @@ def footer(scripts="", jsonld_blocks=""):
   </div>
   <div class="base">
     <span>&copy; {C.COPY_YEAR} {copy_name} All rights reserved.</span>
-    <span>企業の魅力を クリエイティブで 形にする</span>
+    <span>全ての企業に、WEBマーケティングを</span>
   </div>
 </footer>
 {jsonld_blocks}
@@ -441,7 +441,7 @@ def pickup_band():
 def page_index(articles):
     latest = articles[:3]
     h = head(
-        "ARTICLE｜Web制作・映像制作 — 企業の魅力を、クリエイティブで形にする。",
+        "ARTICLE｜Web制作・映像制作 — 全ての企業に、WEBマーケティングを。",
         "Web制作・映像制作・SNS支援で、集客・採用につながるクリエイティブを。"
         "相模原・町田を拠点に全国対応。SNSフォロワー5万人の運用実績。制作費は4万円から、制作期間は2週間。",
         "/", canonical="/",
@@ -449,7 +449,7 @@ def page_index(articles):
     h += f"""
 <main>
 
-<section class="hero" data-bg="dark" aria-label="企業の魅力を クリエイティブで 形にする">
+<section class="hero" data-bg="dark" aria-label="全ての企業に、WEBマーケティングを">
   <video class="hero-video" autoplay muted loop playsinline preload="metadata"
          poster="/assets/hero-final-poster.jpg">
     <source src="/assets/hero-final.mp4" type="video/mp4">
@@ -459,9 +459,8 @@ def page_index(articles):
   <div class="hero-copy">
     <p class="hero-eyebrow">{C.BRAND_EN} &mdash; Web &amp; Film</p>
     <h1 class="hero-lead">
-      <span class="l"><span>企業の魅力を</span></span>
-      <span class="l"><span><em>クリエイティブ</em>で</span></span>
-      <span class="l"><span>形にする</span></span>
+      <span class="l"><span>全ての企業に、</span></span>
+      <span class="l"><span><em>WEBマーケティング</em>を</span></span>
     </h1>
     <div class="hero-actions">
       <a class="btn-solid" href="/works/">実績を見る <span class="ar">&rarr;</span></a>

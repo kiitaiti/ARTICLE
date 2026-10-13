@@ -37,7 +37,7 @@ NAV = [
 # (パス, 日本語, 英字)  ※ リンク先は SERVICE ページ内の各セクション
 NAV_SUB = {
     "/service/": [
-        ("/service/#web",    "HP制作",  "Web"),
+        ("/service/#web",    "HP制作・WEBマーケティング",  "Web"),
         ("/service/#film",   "映像制作", "Film"),
         ("/service/#social", "SNS支援",  "Social"),
     ],
@@ -53,7 +53,7 @@ SERVICE_LEAD = (
 
 SERVICES = [
     dict(
-        no="01", en="Web", jp="ホームページ制作",
+        no="01", en="Web", jp="HP制作・WEBマーケティング",
         body="コーポレートサイト、ブランドサイト、ランディングページ、リニューアルまで。"
              "「見た目がきれい」で終わらせず、問い合わせを増やしたいのか、採用につなげたいのか、"
              "目的を整理してから、構成・デザイン・実装・公開までを一貫して担当します。"
@@ -310,7 +310,7 @@ COMPANY = [
     ("名称",     "ARTICLE"),
     ("代表者",   REPRESENTATIVE),
     ("所在地",   "神奈川県相模原市"),
-    ("事業内容", "Web制作・ホームページ制作 / 映像制作・動画編集 / SNS支援"),
+    ("事業内容", "HP制作・WEBマーケティング / 映像制作・動画編集 / SNS支援"),
 ]
 
 # 対応地域
@@ -341,7 +341,7 @@ CONTACT_INFO = [
     ("Company", "ARTICLE"),
     ("Representative", REPRESENTATIVE),
     ("Area", "全国（オンライン対応可）"),
-    ("Service", "Web制作 / 映像制作 / SNS運用"),
+    ("Service", "HP制作・WEBマーケティング / 映像制作 / SNS支援"),
     ("Price", "4万円〜（税別）"),
 ]
 
