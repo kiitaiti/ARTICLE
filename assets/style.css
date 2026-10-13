@@ -154,10 +154,10 @@ nav.gnav .gnav-sub a:hover .jp,nav.gnav .gnav-sub a:focus-visible .jp{color:var(
 .hero-eyebrow::after{content:"";width:clamp(40px,6vw,84px);height:2px;background:var(--lime)}
 .hero-lead{
   font-family:var(--jp);font-weight:900;
-  font-size:clamp(30px,5.4vw,76px);line-height:1.26;letter-spacing:.005em;
+  font-size:min(clamp(30px,5.4vw,76px),7.6vw);line-height:1.26;letter-spacing:.005em;
   text-shadow:0 4px 40px rgba(0,0,0,.65),0 1px 3px rgba(0,0,0,.5);
 }
-.hero-lead .l{display:block;overflow:hidden}
+.hero-lead .l{display:block;overflow:hidden;white-space:nowrap}
 .hero-lead .l>span{display:inline-block;transform:translateY(105%);
   animation:heroUp .95s var(--ease) forwards}
 .hero-lead .l:nth-child(1)>span{animation-delay:.15s}
