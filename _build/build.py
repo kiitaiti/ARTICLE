@@ -699,22 +699,29 @@ def page_service(articles):
 PER_PAGE = 9  # 1ページに表示する実績の件数（WEB / FILM 共通）
 
 
-def cms_img(url, w):
-    """microCMS の画像は、幅とWebP変換のパラメータを付けて軽くする。"""
+def cms_img(url, w, ratio=None):
+    """microCMS の画像は、幅とWebP変換のパラメータを付けて軽くする。
+
+    ratio を渡すと高さと fit=crop も指定し、アップロードされた画像が
+    縦長でも横長でも、CDN側で同じ縦横比（中央切り抜き）に揃えて配信される。
+    これにより、登録する画像の形がバラバラでもカードの体裁がずれない。"""
     if not url:
         return ""
     if url.startswith("http") and "?" not in url:
-        return url + "?w=" + str(w) + "&fm=webp"
+        p = "?w=" + str(w) + "&fm=webp"
+        if ratio:
+            p += "&h=" + str(int(w * ratio)) + "&fit=crop"
+        return url + p
     return url
 
 
 def img_tag(url, alt, cls, base_w=760, ratio=0.625):
-    """サムネイル用の img。microCMS の画像なら 1x / 2x を出し分ける。"""
-    src = cms_img(url, base_w)
+    """サムネイル用の img。microCMS の画像なら 1x / 2x を出し分け、縦横比も揃える。"""
+    src = cms_img(url, base_w, ratio)
     srcset = ""
     if url.startswith("http") and "?" not in url:
-        srcset = (' srcset="' + esc(cms_img(url, base_w)) + ' 1x, '
-                  + esc(cms_img(url, base_w * 2)) + ' 2x"')
+        srcset = (' srcset="' + esc(cms_img(url, base_w, ratio)) + ' 1x, '
+                  + esc(cms_img(url, base_w * 2, ratio)) + ' 2x"')
     return ('<img class="' + cls + '" src="' + esc(src) + '"' + srcset
             + ' alt="' + esc(alt) + '"'
             + ' width="' + str(base_w) + '" height="' + str(int(base_w * ratio)) + '"'
