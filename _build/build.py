@@ -131,6 +131,16 @@ def nav_items(current, indent, mobile=False):
     return "\n".join(rows)
 
 
+def asset_ver(relpath):
+    """CSS/JSの中身から短いハッシュを作る。更新のたびにURLが変わるので、
+    訪問者のブラウザに古いキャッシュが残っていても必ず新しい方が読み込まれる。"""
+    import hashlib
+    try:
+        return hashlib.md5((OUT / relpath).read_bytes()).hexdigest()[:8]
+    except Exception:
+        return "1"
+
+
 def head(title, desc, current, canonical="", og_image="", og_type="website",
          extra_head="", noindex=False):
     """全ページ共通の <head> ～ ヘッダー部分。"""
@@ -176,7 +186,7 @@ def head(title, desc, current, canonical="", og_image="", og_type="website",
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">{extra_head}
+<link rel="stylesheet" href="/assets/style.css?v={asset_ver('assets/style.css')}">{extra_head}
 </head>
 <body>
 
@@ -230,7 +240,7 @@ def footer(scripts="", jsonld_blocks=""):
   </div>
 </footer>
 {jsonld_blocks}
-<script src="/assets/app.js" defer></script>{scripts}
+<script src="/assets/app.js?v={asset_ver('assets/app.js')}" defer></script>{scripts}
 </body>
 </html>
 """
@@ -985,7 +995,7 @@ def page_about(articles):
     h = head(
         "ARTICLEについて｜ARTICLE — 強み・会社概要・対応地域",
         "相模原を拠点に、全国の企業の集客・採用を支援するARTICLEについて。"
-        "選ばれる5つの強み、会社概要、対応エリアをご紹介します。",
+        "選ばれる強み、会社概要、対応エリアをご紹介します。",
         "/about/", canonical="/about/",
     )
     h += f"""
@@ -997,7 +1007,7 @@ def page_about(articles):
   <div class="inner">
     <p class="no">03 / About</p>
     <h1 class="anton">Why<br><span class="stroke">Article</span><span class="accent">.</span></h1>
-    <div class="tags"><span>Local</span><span>Price</span><span>One Stop</span><span>SNS Marketing</span><span>After Launch</span></div>
+    <div class="tags"><span>Online</span><span>Price</span><span>Marketing</span><span>SNS</span></div>
     <p class="jp">ARTICLEがどんな会社で、なぜ選ばれているのかをまとめました。</p>
   </div>
 </section>
@@ -1017,7 +1027,7 @@ def page_about(articles):
   <div class="sec-intro">
     <p class="no rv"><span class="n">01</span> Strengths &mdash; ARTICLEの強み</p>
     <h2 class="anton rv">Five<br><span class="stroke">Reasons</span><span class="accent">.</span></h2>
-    <p class="jp rv">ARTICLEにご依頼いただく理由を、5つにまとめました。</p>
+    <p class="jp rv">ARTICLEにご依頼いただく理由を、4つにまとめました。</p>
   </div>
 </section>
 
