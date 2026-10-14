@@ -1,0 +1,57 @@
+# ============================================================
+# ARTICLE — Netlify ビルド設定
+#
+# ・ビルドコマンドが _build/build.py を実行し、microCMS から記事を取得して
+#   静的HTMLを生成します。
+# ・リダイレクトはこのファイルではなく `_redirects` に書いています。
+# ・環境変数（MICROCMS_SERVICE_DOMAIN / MICROCMS_API_KEY / SITE_URL）は
+#   Netlify管理画面の Site configuration → Environment variables で登録します。
+#   このファイルには絶対に書かないでください。
+# ============================================================
+
+[build]
+  command = "python3 _build/build.py"
+  publish = "."
+
+[build.environment]
+  # Netlify のビルド環境で使う Python のバージョン。
+  # ビルドが「python3: command not found」等で失敗する場合は、
+  # この行を削除するか "3.10" などに変更してください。
+  PYTHON_VERSION = "3.11"
+
+# ---------------- セキュリティヘッダー ----------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# ---------------- キャッシュ ----------------
+# 動画・画像は差し替え頻度が低いので長めに。CSS/JSは短めにして
+# 修正がすぐ反映されるようにしています。
+[[headers]]
+  for = "/assets/*.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/assets/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/assets/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

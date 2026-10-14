@@ -1,0 +1,38 @@
+# ============================================================
+# ARTICLE — Netlify リダイレクト設定
+# 上の行から順に評価されます。書き方: 元のパス  行き先  ステータス
+# ============================================================
+
+# ---- ページ統合にともなう旧URL（301 = 恒久的な移転） ----
+/strengths.html    /about/      301
+/process.html      /service/    301
+/voice.html        /works/      301
+/works.html        /works/      301
+/contact.html      /contact/    301
+/index.html        /            301
+
+# 旧ページのアンカー付きリンク対策
+/works.html/*      /works/      301
+/process.html/*    /service/    301
+
+# ---- NEWS は独立ページを作らず COLUMN 内のカテゴリーとして扱う ----
+/news              /column/?cat=news    301
+/news/             /column/?cat=news    301
+/news/*            /column/             301
+
+# ---- 拡張子なしURLで来たとき ----
+/service           /service/    301
+/works             /works/      301
+/about             /about/      301
+/column            /column/     301
+/contact           /contact/    301
+
+# ---- ビルド用ファイルは公開しない ----
+/_build/*          /404.html    404!
+
+# ---- ローカルプレビュー用ファイルは公開しない ----
+/*.command         /404.html    404!
+/*.bat             /404.html    404!
+
+# ※ 上のどれにも当てはまらない存在しないURLは、Netlify が自動的に
+#   /404.html を 404 ステータスで返します（ワイルドカードは書きません）。
